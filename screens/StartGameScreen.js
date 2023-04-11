@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     marginTop: 100,
     padding: 16,
-    backgroundColor: "#72063c",
+    backgroundColor: "#44102a",
     marginHorizontal: 24,
     borderRadius: 8,
     elevation: 4, //shadow for android
