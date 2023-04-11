@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
     shadowRadius: 6, //shadow style for iOS
     shadowOpacity: 0.25, //shadow style for iOS
   },
-
   numberInput: {
     height: 50,
     width: 50,
