@@ -1,8 +1,17 @@
-import { StyleSheet, TextInput } from 'react-native'
-import { View } from 'react-native'
-import PrimaryButton from '../components/PrimaryButton'
+import { StyleSheet, TextInput } from "react-native";
+import { View } from "react-native";
+import PrimaryButton from "../components/PrimaryButton";
+import { useState } from "react";
 
 function StartGameScreen() {
+  const [enteredNumber, setEnteredNumber] = useState("");
+
+  function numberInputHandler(enteredText) {
+    setEnteredNumber(enteredText);
+  }
+
+  function confirmInputHandler() {}
+
   return (
     <View style={styles.inputContainer}>
       <TextInput
@@ -10,32 +19,34 @@ function StartGameScreen() {
         maxLength={2}
         textAlign='center'
         inputMode='numeric'
+        value={enteredNumber}
+        onChangeText={numberInputHandler}
       />
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonContainer}>
           <PrimaryButton>Reset</PrimaryButton>
         </View>
         <View style={styles.buttonContainer}>
-          <PrimaryButton>Confirm</PrimaryButton>
+          <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
         </View>
       </View>
     </View>
-  )
+  );
 }
 
-export default StartGameScreen
+export default StartGameScreen;
 
 const styles = StyleSheet.create({
   inputContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 100,
     padding: 16,
-    backgroundColor: '#44102a',
+    backgroundColor: "#44102a",
     marginHorizontal: 24,
     borderRadius: 8,
     elevation: 4, //shadow for android
-    shadowColor: 'black', //shadow style for iOS
+    shadowColor: "black", //shadow style for iOS
     shadowOffset: { width: 0, height: 2 }, //shadow style for iOS
     shadowRadius: 6, //shadow style for iOS
     shadowOpacity: 0.25, //shadow style for iOS
@@ -44,16 +55,16 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     fontSize: 32,
-    borderBottomColor: '#ddb52f',
+    borderBottomColor: "#ddb52f",
     borderBottomWidth: 2,
-    color: '#ddb52f',
+    color: "#ddb52f",
     marginVertical: 8,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   buttonsContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   buttonContainer: {
     flex: 1,
   },
-})
+});
