@@ -1,37 +1,38 @@
-import { Alert, StyleSheet, TextInput } from "react-native";
-import { View } from "react-native";
-import PrimaryButton from "../components/PrimaryButton";
-import { useState } from "react";
+import { Alert, StyleSheet, TextInput } from 'react-native'
+import { View } from 'react-native'
+import PrimaryButton from '../components/PrimaryButton'
+import { useState } from 'react'
+import Colors from '../constants/colors'
 
 function StartGameScreen({ onPickedNumber }) {
-  const [enteredNumber, setEnteredNumber] = useState("");
+  const [enteredNumber, setEnteredNumber] = useState('')
 
   function numberInputHandler(enteredText) {
-    setEnteredNumber(enteredText);
+    setEnteredNumber(enteredText)
   }
 
   function resetInputHandler() {
-    setEnteredNumber("");
+    setEnteredNumber('')
   }
 
   function confirmInputHandler() {
-    const chosenNumber = parseInt(enteredNumber);
+    const chosenNumber = parseInt(enteredNumber)
 
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
       Alert.alert(
-        "Invalid Number",
-        "Number has to be a number between 1 and 99.",
+        'Invalid Number',
+        'Number has to be a number between 1 and 99.',
         [
           {
-            text: "Ok",
+            text: 'Ok',
             onPress: resetInputHandler,
-            style: "destructive",
+            style: 'destructive',
           },
         ]
-      );
+      )
     }
 
-    onPickedNumber(chosenNumber);
+    onPickedNumber(chosenNumber)
   }
 
   return (
@@ -53,22 +54,22 @@ function StartGameScreen({ onPickedNumber }) {
         </View>
       </View>
     </View>
-  );
+  )
 }
 
-export default StartGameScreen;
+export default StartGameScreen
 
 const styles = StyleSheet.create({
   inputContainer: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: 100,
     padding: 16,
-    backgroundColor: "#44102a",
+    backgroundColor: Colors.primary600,
     marginHorizontal: 24,
     borderRadius: 8,
     elevation: 4, //shadow for android
-    shadowColor: "black", //shadow style for iOS
+    shadowColor: 'black', //shadow style for iOS
     shadowOffset: { width: 0, height: 2 }, //shadow style for iOS
     shadowRadius: 6, //shadow style for iOS
     shadowOpacity: 0.25, //shadow style for iOS
@@ -77,16 +78,16 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     fontSize: 32,
-    borderBottomColor: "#ddb52f",
+    borderBottomColor: Colors.accent500,
     borderBottomWidth: 2,
-    color: "#ddb52f",
+    color: Colors.accent500,
     marginVertical: 8,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   buttonsContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   buttonContainer: {
     flex: 1,
   },
-});
+})
