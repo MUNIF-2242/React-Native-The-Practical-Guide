@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Alert } from "react-native";
+import { Text, View, StyleSheet, Alert, FlatList } from "react-native";
 import Title from "../components/ui/Title";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import { useEffect, useState } from "react";
@@ -88,9 +88,14 @@ function GameScreen({ userNumber, onGameOver }) {
       </Card>
       {/* <View>LOG ROUNDS</View> */}
       <View>
-        {guessRounds.map((guessRounds) => (
+        {/* {guessRounds.map((guessRounds) => (
           <Text key={guessRounds}>{guessRounds}</Text>
-        ))}
+        ))} */}
+        <FlatList
+          data={guessRounds}
+          renderItem={(itemData) => <Text>{itemData.item}</Text>}
+          keyExtractor={(item) => item}
+        />
       </View>
     </View>
   );
