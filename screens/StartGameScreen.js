@@ -1,45 +1,54 @@
-import { Alert, StyleSheet, TextInput } from 'react-native'
-import { View, Text } from 'react-native'
-import PrimaryButton from '../components/ui/PrimaryButton'
-import { useState } from 'react'
-import Colors from '../constants/colors'
-import Title from '../components/ui/Title'
-import Card from '../components/ui/Card'
-import InstructionText from '../components/ui/InstructionText'
+import {
+  Alert,
+  StyleSheet,
+  TextInput,
+  useWindowDimensions,
+} from "react-native";
+import { View, Text } from "react-native";
+import PrimaryButton from "../components/ui/PrimaryButton";
+import { useState } from "react";
+import Colors from "../constants/colors";
+import Title from "../components/ui/Title";
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
 
 function StartGameScreen({ onPickedNumber }) {
-  const [enteredNumber, setEnteredNumber] = useState('')
+  const [enteredNumber, setEnteredNumber] = useState("");
+
+  const { width, height } = useWindowDimensions();
 
   function numberInputHandler(enteredText) {
-    setEnteredNumber(enteredText)
+    setEnteredNumber(enteredText);
   }
 
   function resetInputHandler() {
-    setEnteredNumber('')
+    setEnteredNumber("");
   }
 
   function confirmInputHandler() {
-    const chosenNumber = parseInt(enteredNumber)
+    const chosenNumber = parseInt(enteredNumber);
 
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
       Alert.alert(
-        'Invalid Number',
-        'Number has to be a number between 1 and 99.',
+        "Invalid Number",
+        "Number has to be a number between 1 and 99.",
         [
           {
-            text: 'Ok',
+            text: "Ok",
             onPress: resetInputHandler,
-            style: 'destructive',
+            style: "destructive",
           },
         ]
-      )
+      );
     }
 
-    onPickedNumber(chosenNumber)
+    onPickedNumber(chosenNumber);
   }
 
+  const marginTopDistance = height < 680 ? 30 : 100;
+
   return (
-    <View style={styles.rootContainer}>
+    <View style={[styles.rootContainer, { marginTop: marginTopDistance }]}>
       <Title>Guess My Number</Title>
 
       <Card>
@@ -62,16 +71,16 @@ function StartGameScreen({ onPickedNumber }) {
         </View>
       </Card>
     </View>
-  )
+  );
 }
 
-export default StartGameScreen
+export default StartGameScreen;
 
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    marginTop: 100,
-    alignItems: 'center',
+    //marginTop: deviceHeight < 600 ? 30 : 100,
+    alignItems: "center",
   },
   numberInput: {
     height: 50,
@@ -81,12 +90,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     color: Colors.accent500,
     marginVertical: 8,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   buttonsContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   buttonContainer: {
     flex: 1,
   },
-})
+});
