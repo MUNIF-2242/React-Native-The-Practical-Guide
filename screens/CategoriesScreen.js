@@ -4,11 +4,13 @@ import { CATEGORIES } from '../data/dummy-data'
 import CategoryGridTitle from '../components/CategoryGridTitle'
 
 function CategoriesScreen({ navigation }) {
-  function onPressHandler() {
-    navigation.navigate('Meals Overview')
-  }
-
   function renderCategoryItem(itemData) {
+    function onPressHandler() {
+      navigation.navigate('Meals Overview', {
+        categoryId: itemData.item.id,
+      })
+    }
+
     return (
       <CategoryGridTitle
         title={itemData.item.title}
