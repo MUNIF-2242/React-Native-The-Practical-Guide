@@ -1,6 +1,7 @@
 import { SafeAreaView, StyleSheet } from "react-native";
 import CategoriesScreen from "./screens/CategoriesScreen";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
+import MealDetailsScreen from "./screens/MealDetailsScreen";
 import { StatusBar } from "expo-status-bar";
 
 import { NavigationContainer } from "@react-navigation/native";
@@ -29,6 +30,10 @@ export default function App() {
             options={{ title: "All Categories" }}
           />
           <Stack.Screen name='MealsOverview' component={MealsOverviewScreen} />
+          <Stack.Screen
+            name='MealDetailsScreen'
+            component={MealDetailsScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
