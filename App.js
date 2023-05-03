@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <>
-      <StatusBar style='light' />
+      <StatusBar style="light" />
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
@@ -25,13 +25,13 @@ export default function App() {
           }}
         >
           <Stack.Screen
-            name='MealsCategories'
+            name="MealsCategories"
             component={CategoriesScreen}
             options={{ title: "All Categories" }}
           />
-          <Stack.Screen name='MealsOverview' component={MealsOverviewScreen} />
+          <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
           <Stack.Screen
-            name='MealDetailsScreen'
+            name="MealDetailsScreen"
             component={MealDetailsScreen}
           />
         </Stack.Navigator>
