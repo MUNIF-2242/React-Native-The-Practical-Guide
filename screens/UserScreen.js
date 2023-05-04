@@ -1,7 +1,15 @@
-import { Text } from "react-native";
+import { Button, Text } from "react-native";
 
-function UserScreen() {
-  return <Text>UserScreen</Text>;
+function UserScreen({ navigation }) {
+  function openDrawerHandler() {
+    navigation.toggleDrawer();
+  }
+  return (
+    <>
+      <Text>User Screen</Text>
+      <Button onPress={openDrawerHandler} title="Open Drawer" />
+    </>
+  );
 }
 
 export default UserScreen;
