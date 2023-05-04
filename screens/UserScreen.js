@@ -7,7 +7,7 @@ function UserScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text>User Screen..</Text>
-      <Button onPress={openDrawerHandler} title="Open Drawer" />
+      {/* <Button onPress={openDrawerHandler} title="Open Drawer" /> */}
     </View>
   );
 }

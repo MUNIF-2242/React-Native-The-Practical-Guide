@@ -5,45 +5,44 @@ import WelcomeScreen from "./screens/WelcomeScreen";
 import UserScreen from "./screens/UserScreen";
 import "react-native-gesture-handler";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const Drawer = createDrawerNavigator();
+const BttomTab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
+      <BttomTab.Navigator
         screenOptions={{
           headerStyle: {
             backgroundColor: "#3c0a6b",
           },
           headerTintColor: "white",
-
-          drawerActiveBackgroundColor: "#f0e1ff",
-          drawerActiveTintColor: "#3c0a6b",
-          drawerStyle: { backgroundColor: "#ccc" },
+          tabBarActiveTintColor: "#3c0a6b",
         }}
       >
-        <Drawer.Screen
-          name="Welcome"
+        <BttomTab.Screen
+          name="Welcome Screen"
           component={WelcomeScreen}
           options={{
-            drawerLabel: "Welcome Screen",
-            drawerIcon: ({ color, size }) => (
+            tabBarLabel: "Welcome",
+            tabBarIcon: ({ color, size }) => (
               <Ionicons name="home" color={color} size={size} />
             ),
           }}
         />
-        <Drawer.Screen
-          name="User"
+        <BttomTab.Screen
+          name="User Screen"
           component={UserScreen}
           options={{
-            drawerLabel: "User Screen",
-            drawerIcon: ({ color, size }) => (
+            tabBarLabel: "User",
+            tabBarIcon: ({ color, size }) => (
               <Ionicons name="person" color={color} size={size} />
             ),
           }}
         />
-      </Drawer.Navigator>
+      </BttomTab.Navigator>
     </NavigationContainer>
   );
 }
